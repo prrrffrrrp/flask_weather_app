@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "flask_weather_app"
+version = "0.1.0"
+description = ""
+authors = ["arnau <prrrffrrrp@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Flask = "^2.1.2"
+Flask-SQLAlchemy = "^2.5.1"
+requests = "^2.27.1"
+python-dotenv = "^0.20.0"
+pynvim = "^0.4.3"
+Flask-Bootstrap = "^3.3.7"
+Flask-WTF = "^1.0.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

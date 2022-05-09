@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+{% block header %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>What's the weather like?</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+</head>
+{% endblock %}
+
+{% block title %}
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">Check the weather</h1>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+          <div class="notification is-info is-4 is-offset-4">{{ message }}
+              <button class="delete"></button>
+          </div>
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    {% block app_content %}
+    {% endblock %}
+  </div>
+{% endblock %}
+</html>

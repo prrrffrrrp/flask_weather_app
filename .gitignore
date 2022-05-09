@@ -1,0 +1,20 @@
+__pycache__
+*.so
+*.pyc
+
+/* ctags */
+tags
+tags.*
+
+/* flask */
+.env
+.flaskenv
+
+/* vim - poetry */
+.vim/*
+
+/* node */
+node_modules/*
+
+/* app local database */
+weather.db
