@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-2 is-8">
+                  <div class="card">
+                      <header class="card-header">
+                          <p class="card-header-title is-centered">{{ city_weather.city }}</p>
+                      </header>
+                      <div class="card-content">
+                          <article class="media">
+                              <div class="media-left">
+                                  <figure class="image is 48x48">
+                                      <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Weather icon">
+                                  </figure>
+                              </div>
+                              <div class="media-content">
+                                  <p class="title">{{ city_weather.temperature }}°C</p>
+                                  <p class="subtitle">{{ city_weather.description }}</p>
+                              </div>
+                          </article>
+                          <article class="media">
+                              <div class="media-content">
+                                  <p class="subtitle">min: <strong>{{ city_weather.temp_min }}</strong>°C</p>
+                                  <p class="subtitle">max: <strong>{{ city_weather.temp_max }}</strong>°C</p>
+                                  <p class="subtitle">feels like: <strong>{{ city_weather.feels_like }}</strong>°C</p>
+                              </div>
+                              <div class="media-content">
+                                  <p class="subtitle">pressure: <strong>{{ city_weather.pressure }}</strong> hPa</p>
+                                  <p class="subtitle">humidity: <strong>{{ city_weather.humidity }}</strong>%</p>
+                              </div>
+                          </article>
+                      </div>
+                      <footer class="card-footer">
+                        <p class="card-footer-item">
+                            <a href="{{ url_for('index') }}">back to main page</a>
+                        </p>
+                      </footer>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+{% endblock %}
