@@ -1,6 +1,6 @@
 import requests
 from config import Config
-from flask import Flask, render_template, flash
+from flask import Flask, render_template, flash, redirect, url_for, request
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
@@ -52,3 +52,12 @@ def index():
         weather_data.append(weather)
 
     return render_template('index.html', weather_data=weather_data, form=CityForm())
+
+
+@app.route('/city/<string:city_name>/delete', methods=['POST'])
+def delete_city(city_name):
+    city_obj = City.query.filter_by(name=city_name).first()
+    db.session.delete(city_obj)
+    db.session.commit()
+
+    return redirect(url_for('index'))
