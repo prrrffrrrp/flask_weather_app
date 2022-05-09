@@ -54,6 +54,26 @@ def index():
     return render_template('index.html', weather_data=weather_data, form=CityForm())
 
 
+@app.route('/city/<string:city_name>')
+def city(city_name):
+
+    url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&units=metric&appid={app.config['WEATHER_API_KEY']}"
+    r = requests.get(url).json()
+
+    city_weather = {
+        'city': city_name,
+        'temperature': r['main']['temp'],
+        'temp_min': r['main']['temp_min'],
+        'temp_max': r['main']['temp_max'],
+        'pressure': r['main']['pressure'],
+        'humidity': r['main']['humidity'],
+        'feels_like': r['main']['feels_like'],
+        'description': r['weather'][0]['description'],
+        'icon': r['weather'][0]['icon'],
+    }
+    return render_template('city.html', city_weather=city_weather)
+
+
 @app.route('/city/<string:city_name>/delete', methods=['POST'])
 def delete_city(city_name):
     city_obj = City.query.filter_by(name=city_name).first()

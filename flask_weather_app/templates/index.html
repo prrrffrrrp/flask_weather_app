@@ -35,16 +35,19 @@
                                     <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image">
                                 </figure>
                             </div>
-                            <div class="media-content">
-                                <div class="content">
-                                    <p>
-                                        <span class="title">{{ weather.city }}</span>
-                                        <br>
-                                        <span class="subtitle">{{ weather.temperature }}° C</span>
-                                        <br> {{ weather.description }}
-                                    </p>
+                                <div class="media-content">
+                                    <a href="{{ url_for('city', city_name=weather.city) }}">
+                                    <div class="content">
+                                        <p>
+                                            <span class="title">{{ weather.city }}</span>
+                                            <br>
+                                            <span class="subtitle">{{ weather.temperature }}° C</span>
+                                            <br> 
+                                            <span class="subtitle is-5">{{ weather.description }}</span>
+                                        </p>
+                                    </div>
+                                    </a>
                                 </div>
-                            </div>
                             <form method="post" action="/city/{{ weather.city }}/delete">
                                 <button class="delete media-right"></button>
                             </form>
